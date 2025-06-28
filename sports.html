@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sports</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- GLOBAL NAV -->
+  <header class="video-header">
+    <nav class="top-nav">
+      <div class="nav-left"><a href="team.html">TEAM</a></div>
+      <div class="nav-center">
+        <a href="index.html">SPORTS</a>
+        <a href="commercial.html">COMMERCIAL</a>
+        <a href="webui.html">WEB / UI DESIGN</a>
+      </div>
+      <div class="nav-right"><a href="contact.html">CONTACT</a></div>
+    </nav>
+  </header>
+
+  <main class="sports-page">
+
+    <div class="sports-container">
+      <div class="sports-text">SPORTS</div>
+      <div id="sportsSubtitle" class="sports-subtitle">Video</div>
+      <div class="sports-logo">
+        <img src="orangelogo.png" alt="Logo">
+      </div>
+      <div class="sports-tabs">
+        <button class="sports-tab active" data-tab="video">Video</button>
+        <button class="sports-tab"       data-tab="photo">Photo</button>
+        <button class="sports-tab"       data-tab="graphics">Graphics</button>
+      </div>
+    </div>
+
+    <!-- VIDEO TAB -->
+    <section id="video" class="sports-content active">
+
+      <!-- MAIN PREVIEW VIDEO -->
+      <div class="sports-video video-preview">
+        <video src="o2.mp4" autoplay muted loop playsinline></video>
+      </div>
+
+      <!-- 2×2 GRID OF VIDEOS -->
+      <div class="video-grid">
+        <div class="video-grid-item">
+          <video src="o2.mp4" autoplay muted loop playsinline></video>
+        </div>
+        <div class="video-grid-item">
+          <video src="o2.mp4" autoplay muted loop playsinline></video>
+        </div>
+        <div class="video-grid-item">
+          <video src="o2.mp4" autoplay muted loop playsinline></video>
+        </div>
+        <div class="video-grid-item">
+          <video src="o2.mp4" autoplay muted loop playsinline></video>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- PHOTO TAB -->
+    <section id="photo" class="sports-content">
+      <div class="sub-grid">
+        <div class="sub-grid-item">
+          <img src="knoxcommit.png" alt="Photo 1">
+        </div>
+        <div class="sub-grid-item">
+          <img src="knoxcommit.png" alt="Photo 2">
+        </div>
+        <div class="sub-grid-item">
+          <img src="knoxcommit.png" alt="Photo 3">
+        </div>
+      </div>
+    </section>
+
+    <!-- GRAPHICS TAB -->
+    <section id="graphics" class="sports-content">
+      <div class="sports-video video-preview">
+        <video src="o2.mp4" autoplay muted loop playsinline></video>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- VIDEO MODAL -->
+  <div class="video-modal" id="videoModal">
+    <div class="video-modal__content">
+      <button class="video-modal__close" id="videoModalClose">&times;</button>
+      <video id="videoModalVideo" src="" controls></video>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // NAV HIDE/SHOW
+      const header = document.querySelector('.video-header');
+      const container = document.querySelector('.sports-page');
+      let lastY = container.scrollTop;
+      container.addEventListener('scroll', () => {
+        const y = container.scrollTop;
+        header.style.transform = y > lastY 
+          ? 'translateY(-100%)' 
+          : 'translateY(0)';
+        lastY = y;
+      });
+
+      // TABS + SUBTITLE
+      const tabs = document.querySelectorAll('.sports-tab');
+      const contents = document.querySelectorAll('.sports-content');
+      const subtitle = document.getElementById('sportsSubtitle');
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          tabs.forEach(t => t.classList.remove('active'));
+          contents.forEach(c => c.classList.remove('active'));
+          tab.classList.add('active');
+          document.getElementById(tab.dataset.tab).classList.add('active');
+          subtitle.textContent = tab.textContent;
+        });
+      });
+
+      // VIDEO PREVIEW → MODAL
+      const modal = document.getElementById('videoModal');
+      const modalVideo = document.getElementById('videoModalVideo');
+      document.querySelectorAll('.video-preview').forEach(preview => {
+        preview.addEventListener('click', () => {
+          modalVideo.src = preview.querySelector('video').src;
+          modal.classList.add('active');
+          modalVideo.currentTime = 0;
+          modalVideo.play();
+        });
+      });
+      document.getElementById('videoModalClose').addEventListener('click', () => {
+        modalVideo.pause();
+        modal.classList.remove('active');
+      });
+      modal.addEventListener('click', e => {
+        if (e.target === modal) {
+          modalVideo.pause();
+          modal.classList.remove('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

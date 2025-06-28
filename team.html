@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Our Team</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- GLOBAL NAV -->
+  <header class="video-header">
+    <nav class="top-nav">
+      <div class="nav-left"><a href="team.html">TEAM</a></div>
+      <div class="nav-center">
+        <a href="index.html">SPORTS</a>
+        <a href="commercial.html">COMMERCIAL</a>
+        <a href="webui.html">WEB / UI DESIGN</a>
+      </div>
+      <div class="nav-right"><a href="contact.html">CONTACT</a></div>
+    </nav>
+  </header>
+
+  <!-- TEAM CAROUSEL -->
+  <div class="team-viewport">
+    <div class="team-carousel">
+      <section class="member">
+        <div class="member-content">
+          <h1>
+            <span class="first-name">Kellen</span>
+            <span class="last-name">Andrews</span>
+          </h1>
+        </div>
+      </section>
+      <section class="member">
+        <div class="member-content">
+          <h1>
+            <span class="first-name">Ionela</span>
+            <span class="last-name">Munteanu</span>
+          </h1>
+        </div>
+      </section>
+      <section class="member">
+        <div class="member-content">
+          <h1>
+            <span class="first-name">Andrew</span>
+            <span class="last-name">Festivus</span>
+          </h1>
+        </div>
+      </section>
+      <!-- script will duplicate these for infinite loop -->
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.querySelector('.team-viewport');
+      const carousel = document.querySelector('.team-carousel');
+      const originals = Array.from(carousel.children);
+      const count = originals.length;
+      const itemHeight = originals[0].offsetHeight;
+
+      // seamless loop prep
+      originals.forEach(node => carousel.appendChild(node.cloneNode(true)));
+
+      let offset = 0, velocity = 0, animFrame = null;
+      const loopHeight = itemHeight * count;
+      const members = Array.from(carousel.children);
+
+      function animate() {
+        offset = (offset + velocity + loopHeight) % loopHeight;
+        carousel.style.transform = `translateY(${-offset}px)`;
+
+        // subtle scale & tilt
+        const dir = velocity > 0 ? 1 : -1;
+        const angle = dir * Math.min(Math.abs(velocity) / 30, 8);
+        const scale = 1 + Math.min(Math.abs(velocity) / 500, 0.08);
+
+        members.forEach(member => {
+          member.querySelector('.member-content')
+                .style.transform = `scale(${scale}) rotateZ(${angle}deg)`;
+        });
+
+        velocity *= 0.92;
+        if (Math.abs(velocity) > 0.2) {
+          animFrame = requestAnimationFrame(animate);
+        } else {
+          members.forEach(member => {
+            member.querySelector('.member-content').style.transform = '';
+          });
+          animFrame = null;
+        }
+      }
+
+      container.addEventListener('wheel', e => {
+        e.preventDefault();
+        velocity += e.deltaY * 0.06;
+        if (!animFrame) animFrame = requestAnimationFrame(animate);
+      }, { passive: false });
+    });
+  </script>
+</body>
+</html>

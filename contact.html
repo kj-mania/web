@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Disable the global top/bottom gradients only on this page */
+    body::before,
+    body::after {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="video-header">
+    <nav class="top-nav">
+      <div class="nav-left">
+        <a href="team.html">TEAM</a>
+      </div>
+      <div class="nav-center">
+        <a href="index.html#sports">SPORTS</a>
+        <a href="index.html#commercial">COMMERCIAL</a>
+        <a href="index.html#webui">WEB / UI DESIGN</a>
+      </div>
+      <div class="nav-right">
+        <a href="contact.html">CONTACT</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="contact-page">
+
+    <!-- ORANGE LOGO: dead-center -->
+    <div class="contact-logo">
+        <a href="index.html">
+            <img src="orangelogo.png" alt="KJ Visual Studio logo">
+        </a>
+    </div>
+
+    <!-- STAFF BLOCK (left-aligned, vertically centered) -->
+    <section class="contact-info">
+      <div class="staff-label">STAFF</div>
+
+      <div class="staff-entry">
+        <div class="staff-role">Creative &amp; Founder</div>
+        <div class="staff-name">KJ Andrews</div>
+        <div class="staff-contact">
+          <a href="mailto:kj@kjvisualstudio.com">kj@kjvisualstudio.com</a>
+          <span class="phone">478-342-7567</span>
+        </div>
+      </div>
+
+      <div class="staff-entry">
+        <div class="staff-role">Manager</div>
+        <div class="staff-name">Ionela Munteanu</div>
+        <div class="staff-contact">
+          <a href="mailto:ion@kjvisualstudio.com">ion@kjvisualstudio.com</a>
+          <span class="phone">478-342-7567</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- HERO WITH LOGO CLIP -->
+    <section class="hero-mask">
+      <video 
+        class="hero-video" 
+        src="o2.mp4" 
+        autoplay 
+        muted 
+        loop 
+        playsinline
+      ></video>
+    </section>
+
+    <!-- BOTTOM JAG LOGO -->
+    <div class="bottom-logo">
+      <img src="jaglogo.png" alt="Bottom Logo">
+    </div>
+
+  </main>
+
+</body>
+</html>

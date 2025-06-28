@@ -1,0 +1,1043 @@
+/* ────────────────────────────────────── */
+/* 1) LOAD HORIZON */
+/* If you have .woff/.woff2 files in a “fonts/” folder: */
+/* ────────────────────────────────────── */
+/* LEAGUE SPARTAN FACES */
+
+
+@font-face {
+  font-family: 'League Spartan';
+  src: url('./LeagueSpartan-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'League Spartan';
+  src: url('./LeagueSpartan-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Horizon';
+  src: 
+    url('./horizon.woff2') format('woff2'),
+    url('./horizon.otf')  format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+/* ────────────────────────────────────── */
+/* 2) APPLY GLOBALLY */
+html, body {
+  height: 100%;
+  font-family: 'Horizon', sans-serif;  /* ← changed from sans-serif */
+}
+
+/* rest of your CSS stays exactly the same */
+* { margin:0; padding:0; box-sizing:border-box }
+
+/* HERO VIDEO */
+#hero-video {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+.background-video {
+  position: absolute;
+  top: 50%; left: 50%;
+  min-width: 100%; min-height: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* center logo on the video */
+.center-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  pointer-events: none;
+}
+.center-logo img {
+  width: 150px;    /* adjust size as needed */
+  height: auto;
+}
+
+/* TOP NAV */
+.video-header {
+  position: absolute;
+  top: 0; width: 100%;
+  z-index: 2;
+}
+.top-nav {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 4rem;
+  font-size: .7rem;
+}
+.top-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+.top-nav a span {
+  opacity: .7;
+  font-size: .8rem;
+  margin-left: .2rem;
+}
+
+/* PROJECT LIST */
+.project-list {
+  position: absolute;
+  bottom: 10rem;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;  /* instead of space-around */
+  
+  /* add equal padding on left/right to act as your gutter */
+  padding: 0 5rem;    /* ← pick 2rem (or whatever) so first card sits 2rem from edge */
+  
+  color: #fff;
+  z-index: 2;
+}
+
+.project {
+  text-align: left;
+  opacity: .5;
+  transition: opacity .3s;
+  cursor: pointer;
+}
+.project.active,
+.project:hover {
+  opacity: 1;
+}
+.project h3 {
+  font-size: 1rem;
+  margin-bottom: .2rem;
+}
+.project p {
+  font-size: .8rem;
+  opacity: .8;
+}
+
+/* BOTTOM-LEFT LOGO */
+.site-logo {
+  opacity: 80;
+  position: absolute;
+  bottom: 4rem;      /* wherever you like vertically */
+  left: 5rem;        /* same as your project-list’s padding-left */
+  z-index: 2;
+  pointer-events: none;
+
+  /* remove any translateX here */
+  transform: none;
+}
+
+.site-logo img {
+  width: 14rem;      /* same size as before */
+  height: auto;
+}
+
+
+.top-nav {
+  display: flex;
+  align-items: center;
+  padding: 4rem;
+  width: 100%;
+}
+
+/* each group is a row */
+.nav-left,
+.nav-center,
+.nav-right {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+/* auto-margin on center pushes it to the middle */
+.nav-center {
+  margin: 0 auto;
+}
+
+/* link styling */
+.top-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* put this in styles.css */
+.video-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 128, 128, 0.10); /* teal @ 20% opacity */
+  z-index: 0;            /* sits above video (z:-1) but below UI (z:2) */
+  pointer-events: none;  /* clicks pass through */
+}
+
+
+.project h3 {
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+
+  /* make all lines equal: */
+  display: block;
+  width: 20rem;               /* ← choose a size that fits your longest title */
+  border-top: 2px solid #fff;
+  padding-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.project p {
+  /* use Medium */
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+/* make sure the video scales like the logo used to */
+.center-logo video {
+  width: 200px;        /* tweak size as needed */
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* pointer-events none so clicks still hit underlying elements */
+.center-logo {
+  pointer-events: none;
+}
+
+/* TEAM PAGE */
+/* TEAM PAGE */
+/* make nav stick on top and be see-through */
+/* ────────────────────────────────────── */
+/* NAV BAR (same as home)                */
+/* ────────────────────────────────────── */
+.video-header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+}
+.top-nav {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 4rem;
+  font-size: .7rem;
+  background: transparent;
+}
+.top-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* ────────────────────────────────────── */
+/* TEAM PAGE                             */
+/* ────────────────────────────────────── */
+.team-viewport {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #111;
+  perspective: 800px;
+  padding-top: 4rem; /* keep nav offset */
+}
+/* dark gradients only on this page */
+.team-viewport::before,
+.team-viewport::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 6rem;
+  pointer-events: none;
+  z-index: 1; /* below nav (z-index:2) */
+}
+.team-viewport::before {
+  top: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.85), transparent);
+}
+.team-viewport::after {
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+}
+
+.team-carousel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  will-change: transform;
+}
+
+.member {
+  width: 100%;
+  background: #111;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+.member-content {
+  transition: transform 0.15s ease;
+  transform-origin: center center;
+}
+.member h1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  margin: 0;
+  font-size: clamp(3rem, 10vw, 7rem);
+  text-transform: uppercase;
+  letter-spacing: -0.1em;
+  line-height: 1;
+}
+
+
+
+/* ────────────────────────────────────── */
+/* CONTACT PAGE STYLES                   */
+/* ────────────────────────────────────── */
+
+/* ensure nav stays where it was on home */
+.video-header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+}
+.top-nav {
+  padding: 4rem;
+  background: transparent;
+}
+
+/* wrap all contact‐page content */
+/* CONTACT PAGE */
+.contact-page {
+  position: relative;
+  background-color: #111;
+  height: 100vh;           /* now covers entire viewport */
+  overflow: hidden;
+  /* remove padding-top, since the nav floats over it */
+}
+
+/* HERO MASK */
+.hero-mask {
+  position: relative;
+  width: 100%;
+  height: 100%;            /* fill its parent (.contact-page) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #130e0e;
+}
+
+/* video clipped to logo */
+.hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: auto;
+  height: 70%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+
+  /* mask using your logo */
+  mask-image: url('orangelogo.png');
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+
+  -webkit-mask-image: url('orangelogo.png');
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+}
+
+/* ────────────────────────────────────── */
+/* CONTACT PAGE STAFF BLOCK             */
+/* ────────────────────────────────────── */
+.contact-info {
+  position: absolute;
+  top: 50%;
+  left: 5rem;
+  transform: translateY(-50%);
+  z-index: 5;
+  font-family: 'League Spartan', sans-serif;
+  color: #888;
+  text-align: left;
+}
+
+/* “STAFF” label at the very top */
+.contact-info .staff-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: #777;
+  margin-bottom: 1.5rem;
+}
+
+/* Each person */
+.staff-entry {
+  margin-bottom: 2rem; /* space between entries */
+}
+
+.staff-entry:last-child {
+  margin-bottom: 0;
+}
+
+.staff-entry .staff-role {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 0.3rem;
+}
+
+.staff-entry .staff-name {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #888;
+  margin-bottom: 0.5rem;
+}
+
+.staff-entry .staff-contact {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.staff-entry .staff-contact a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.staff-entry .staff-contact a:hover {
+  color: #fff;
+}
+
+.staff-entry .phone {
+  margin-left: 1rem;
+}
+
+/* Logo centered at top of contact page */
+.contact-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+}
+.contact-logo img {
+  width: 20em;
+  height: auto;
+}
+
+/* bottom logo spanning full width */
+.bottom-logo {
+  position: absolute;
+  bottom: 0;
+  left: -3%;         /* move left beyond screen */
+  width: 105%;       /* make it 10% wider */
+  z-index: 5;
+  pointer-events: none;
+  text-align: center;
+}
+
+.bottom-logo img {
+  width: 100%;       /* fills the container */
+  height: auto;
+  display: block;
+}
+
+/* ────────────────────────────────────── */
+/* PORTFOLIO GRID & ITEMS               */
+/* ────────────────────────────────────── */
+.portfolio-page {
+  padding: 4rem 2rem;
+  background: #111;
+  min-height: 100vh;
+}
+
+.portfolio-title {
+  font-family: 'League Spartan', sans-serif;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: clamp(2rem, 5vw, 4rem);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* responsive grid */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* each card */
+.portfolio-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: #000;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.portfolio-item img,
+.portfolio-item video {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+/* hover zoom effect */
+.portfolio-item:hover img,
+.portfolio-item:hover video {
+  transform: scale(1.05);
+}
+
+/* optional caption overlay */
+.portfolio-item .caption {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  color: #fff;
+  font-family: 'League Spartan', sans-serif;
+  font-size: 1rem;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+/* ────────────────────────────────────── */
+/* SPORTS PAGE HERO: CENTERED LOGO + TEXT */
+/* ────────────────────────────────────── */
+.sports-page {
+  position: relative;
+  height: 100vh;
+  background: #111;
+  overflow: hidden;
+}
+
+.sports-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* big, low-opacity text behind the logo */
+.sports-text {
+  position: absolute;
+  top: 60%;              /* slightly lower than center */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Horizon', sans-serif;
+  letter-spacing: -.1em;
+  font-size: clamp(4rem, 10vw, 8rem);
+  color: rgb(255, 255, 255);
+  white-space: nowrap;
+  z-index: 1;
+}
+
+/* orange logo dead-center */
+.sports-logo {
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+.sports-logo img {
+  width: 20em;
+  height: auto;
+}
+
+/* ────────────────────────────────────── */
+/* SPORTS PAGE VIDEO POSITIONING        */
+/* ────────────────────────────────────── */
+/* ────────────────────────────────────── */
+/* ENABLE SCROLL + ROUNDED VIDEO FRAME   */
+/* ────────────────────────────────────── */
+
+/* allow page to scroll past viewport */
+.sports-page {
+  position: relative;
+  min-height: 100vh;     /* let it grow beyond one screen */
+  background: #111;
+  overflow-y: auto;      /* enable vertical scrolling */
+}
+
+/* give the video container rounded corners */
+.sports-video {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  z-index: 1;
+  border-radius: 1rem;   /* adjust corner radius as desired */
+  overflow: hidden;      /* clip the video to the rounded edges */
+}
+
+/* the video itself just fills the container */
+.sports-video video {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* ────────────────────────────────────── */
+/* SPORTS PAGE HERO: CENTERED LOGO + TEXT */
+/* ────────────────────────────────────── */
+.sports-page {
+  position: relative;
+  height: 100vh;
+  background: #111;
+  overflow: hidden;
+}
+
+.sports-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* big, low-opacity text behind the logo */
+.sports-text {
+  position: absolute;
+  top: 60%;              /* slightly lower than center */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Horizon', sans-serif;
+  letter-spacing: -.1em;
+  font-size: clamp(4rem, 10vw, 8rem);
+  color: rgb(255, 255, 255);
+  white-space: nowrap;
+  z-index: 1;
+}
+
+/* orange logo dead-center */
+.sports-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+.sports-logo img {
+  width: 20em;
+  height: auto;
+}
+
+/* ────────────────────────────────────── */
+/* SPORTS PAGE VIDEO POSITIONING        */
+/* ────────────────────────────────────── */
+
+/* ENABLE SCROLL + ROUNDED VIDEO FRAME   */
+.sports-page {
+  position: relative;
+  min-height: 100vh;     /* let it grow beyond one screen */
+  background: #111;
+  overflow-y: auto;      /* enable vertical scrolling */
+}
+
+/* give the video container rounded corners */
+.sports-video {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  z-index: 1;
+  border-radius: 1rem;   /* adjust corner radius as desired */
+  overflow: hidden;      /* clip the video to the rounded edges */
+}
+
+/* the video itself just fills the container */
+.sports-video video {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* ────────────────────────────────────── */
+/* CLICKABLE VIDEO PREVIEW & FULLSCREEN MODAL */
+/* ────────────────────────────────────── */
+
+/* preview holds rounded corners & pointer */
+.sports-video {
+  cursor: pointer;
+}
+
+/* Modal overlay */
+.video-modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+.video-modal.active {
+  display: flex;
+}
+
+/* Modal content box */
+.video-modal__content {
+  position: relative;
+  width: 80%;
+  max-width: 1200px;
+}
+.video-modal__close {
+  position: absolute;
+  top: 1rem; right: 1rem;
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+}
+.video-modal__content video {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+}
+
+/* ────────────────────────────────────── */
+/* SPORTS PAGE TABS & CONTENT            */
+/* ────────────────────────────────────── */
+.sports-tabs {
+  position: absolute;
+  top:  FortyFivePercent; /* replace with 45% or desired */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 2rem;
+  z-index: 3;
+}
+.sports-tab {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-family: 'Horizon', sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+.sports-tab.active,
+.sports-tab:hover {
+  opacity: 1;
+}
+
+/* hide/show content */
+.sports-content {
+  display: none;
+}
+.sports-content.active {
+  display: block;
+}
+
+/* ensure project-list flows below video */
+.project-list {
+  position: relative;
+  margin-top: 2rem;
+  padding: 0 5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ────────────────────────────────────── */
+/* SPORTS PAGE TABS – CENTERED & ANIMATED */
+/* ────────────────────────────────────── */
+.sports-tabs {
+  position: absolute;
+  top: 35%;                /* just above the 50%‐centered logo */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 2rem;
+  z-index: 3;
+}
+
+.sports-tab {
+  position: relative;
+  background: none;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-family: 'League Spartan', sans-serif;
+  font-size: 1.25rem;
+  color: #fff;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+.sports-tab:hover {
+  opacity: 1;
+}
+
+/* underline animation */
+.sports-tab::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background-color: #fff;
+  transition: width 0.3s ease;
+}
+.sports-tab.active {
+  opacity: 1;
+}
+.sports-tab.active::after {
+  width: 100%;
+}
+
+/* ────────────────────────────────────── */
+/* SUBTITLE UNDER “SPORTS”               */
+/* ────────────────────────────────────── */
+.sports-subtitle {
+  position: absolute;
+  top: 70%;               /* just below the main “SPORTS” */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Horizon', sans-serif;
+  font-size: clamp(8rem, 4vw, 2.5rem);
+  color: #ffffff;
+  letter-spacing: -0.1em;
+  z-index: 1;
+}
+
+/* ────────────────────────────────────── */
+/* VIDEO MODAL                           */
+/* ────────────────────────────────────── */
+.video-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+.video-modal.active {
+  display: flex;
+}
+.video-modal__content {
+  position: relative;
+  width: 80%;
+  max-width: 1200px;
+}
+.video-modal__close {
+  position: absolute;
+  top: 1rem; right: 1rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+}
+.video-modal__content video {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+}
+
+/* ────────────────────────────────────── */
+/* TABS & SUBTITLE                       */
+/* ────────────────────────────────────── */
+.sports-tabs {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 2rem;
+  z-index: 3;
+}
+.sports-tab {
+  background: none;
+  border: none;
+  padding: .5rem 1rem;
+  font-family: 'League Spartan', sans-serif;
+  font-size: 1.25rem;
+  color: #fff;
+  cursor: pointer;
+  opacity: .6;
+  transition: opacity .2s ease;
+  position: relative;
+}
+.sports-tab:hover,
+.sports-tab.active {
+  opacity: 1;
+}
+.sports-tab::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 0; height: 2px;
+  background: #fff;
+  transition: width .3s ease;
+}
+.sports-tab.active::after {
+  width: 100%;
+}
+
+.sports-subtitle {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Horizon', sans-serif;
+  font-size: clamp(2.5rem,4vw,8rem);
+  letter-spacing: -0.1em;
+  color: #fff;
+  z-index: 1;
+}
+
+
+
+
+
+
+
+
+/* ────────────────────────────────────── */
+/* RESTORE “PHOTO” SUBTITLE STYLES      */
+/* matches your big SPORTS styling      */
+/* ────────────────────────────────────── */
+.sports-subtitle {
+  position: absolute !important;
+  top:      70%       !important;  
+  left:     50%       !important;
+  transform: translate(-50%, -50%) !important;
+  font-family: 'Horizon', sans-serif !important;
+  letter-spacing: -0.1em !important;
+  font-size: clamp(4rem, 10vw, 8rem) !important;
+  color: #fff !important;
+  white-space: nowrap !important;
+  z-index: 1 !important;
+}
+
+/* ────────────────────────────────────── */
+/* VIDEO TAB: 2×2 GRID UNDER MAIN PREVIEW */
+/* ────────────────────────────────────── */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin: 2rem 5rem 4rem; /* top/bottom + 5rem side gutters */
+  box-sizing: border-box;
+}
+
+.video-grid-item {
+  overflow: hidden;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.video-grid-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.video-grid-item:hover video {
+  transform: scale(1.05);
+}
+
+/* ────────────────────────────────────── */
+/* VIDEO TAB: force main preview back in-flow */
+/* so the grid naturally sits beneath it  */
+/* ────────────────────────────────────── */
+#video > .sports-video.video-preview {
+  position: static !important;
+  margin: 0rem auto 0 !important;    /* drop it a bit below the subtitle */
+  transform: none !important;         /* cancel any translateX/Y */
+  width: 90% !important;              /* match your original width */
+  max-width: 1200px !important;       /* optional cap */
+  z-index: 0 !important;              /* sit behind the grid */
+}
+
+/* ensure the grid is in normal flow and on top */
+.video-grid {
+  position: relative;
+  margin-top: 2rem;      /* space under the flowed main video */
+  z-index: 1;            /* sit above the main preview now */
+}
+
+/* ────────────────────────────────────── */
+/* RESTORE ROUNDED EDGES ON MAIN VIDEO   */
+/* ────────────────────────────────────── */
+/* ────────────────────────────────────── */
+/* RESTORE ROUNDED EDGES ON MAIN VIDEO   */
+/* ────────────────────────────────────── */
+#video > .sports-video.video-preview {
+  position: static       !important;
+  margin: 2rem auto 0    !important;
+  width: 100%            !important;
+  max-width: none        !important;
+  padding: 0             !important;
+  box-sizing: border-box !important;
+  border-radius: 1rem    !important;  /* restore rounding */
+  overflow: hidden       !important;  /* clip to that radius */
+}
+
+/* ────────────────────────────────────── */
+/* ALIGN MAIN VIDEO WITH VIDEO-GRID GUTTERS */
+/* ────────────────────────────────────── */
+#video > .sports-video.video-preview {
+  width: calc(100% - 10rem) !important;  /* full width minus 5rem each side */
+  margin: 2rem 5rem 0 !important;        /* top gap + 5rem L/R gutters */
+  box-sizing: border-box !important;
+}
+
+/* ────────────────────────────────────── */
+/* COLLAPSE TOP TEXT/LOGO CONTAINER     */
+/* so the video sits just below the subtitle */
+/* ────────────────────────────────────── */
+
+/* TIGHTEN GAP: remove any extra margin above the video */
+/* ────────────────────────────────────── */
+/* TIGHTEN VIDEO TAB GAP ONCE & FOR ALL */
+/* ────────────────────────────────────── */
+section#video > .sports-video.video-preview {
+  margin-top: 0 !important;
+}
+
+ /* ────────────────────────────────────── */
+/* NUDGE MAIN VIDEO UP UNDER THE SUBTITLE */
+/* ────────────────────────────────────── */
+#video > .sports-video.video-preview {
+  transform: translateY(-10rem) !important;
+}
