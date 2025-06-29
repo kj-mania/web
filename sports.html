@@ -39,12 +39,33 @@
     <!-- VIDEO TAB -->
     <section id="video" class="sports-content active">
 
-      <!-- MAIN PREVIEW VIDEO -->
+      <!-- FIRST MAIN PREVIEW VIDEO -->
       <div class="sports-video video-preview">
         <video src="o2.mp4" autoplay muted loop playsinline></video>
       </div>
 
-      <!-- 2×2 GRID OF VIDEOS -->
+      <!-- FIRST 2×2 GRID OF VIDEOS -->
+      <div class="video-grid">
+        <div class="video-grid-item">
+          <video src="o2.mp4" autoplay muted loop playsinline></video>
+        </div>
+        <div class="video-grid-item">
+          <video src="o2.mp4" autoplay muted loop playsinline></video>
+        </div>
+        <div class="video-grid-item">
+          <video src="o2.mp4" autoplay muted loop playsinline></video>
+        </div>
+        <div class="video-grid-item">
+          <video src="o2.mp4" autoplay muted loop playsinline></video>
+        </div>
+      </div>
+
+      <!-- SECOND MAIN PREVIEW VIDEO -->
+      <div class="sports-video video-preview">
+        <video src="o2.mp4" autoplay muted loop playsinline></video>
+      </div>
+
+      <!-- SECOND 2×2 GRID OF VIDEOS -->
       <div class="video-grid">
         <div class="video-grid-item">
           <video src="o2.mp4" autoplay muted loop playsinline></video>
@@ -64,17 +85,27 @@
 
     <!-- PHOTO TAB -->
     <section id="photo" class="sports-content">
-      <div class="sub-grid">
-        <div class="sub-grid-item">
-          <img src="knoxcommit.png" alt="Photo 1">
+
+      <!-- Masonry-style gallery -->
+      <div class="photo-gallery">
+        <div class="photo-tile">
+          <img src="knoxcommit.png" data-full="knoxcommit.png" alt="Photo 1">
         </div>
-        <div class="sub-grid-item">
-          <img src="knoxcommit.png" alt="Photo 2">
+        <div class="photo-tile">
+          <img src="knoxcommit.png" data-full="knoxcommit.png" alt="Photo 2">
         </div>
-        <div class="sub-grid-item">
-          <img src="knoxcommit.png" alt="Photo 3">
+        <div class="photo-tile">
+          <img src="knoxcommit.png" data-full="knoxcommit.png" alt="Photo 3">
         </div>
+        <!-- add more .photo-tile as needed -->
       </div>
+
+      <!-- Lightbox overlay -->
+      <div id="lightbox" class="lightbox">
+        <img src="" alt="Expanded photo">
+        <button class="lightbox-close">&times;</button>
+      </div>
+
     </section>
 
     <!-- GRAPHICS TAB -->
@@ -141,6 +172,22 @@
         if (e.target === modal) {
           modalVideo.pause();
           modal.classList.remove('active');
+        }
+      });
+
+      // Masonry + Lightbox for Photo tab
+      document.querySelectorAll('.photo-tile img').forEach(img => {
+        img.addEventListener('click', () => {
+          const lb = document.getElementById('lightbox');
+          lb.querySelector('img').src = img.dataset.full;
+          lb.classList.add('active');
+        });
+      });
+      const lb = document.getElementById('lightbox');
+      lb.addEventListener('click', e => {
+        if (e.target === lb || e.target.classList.contains('lightbox-close')) {
+          lb.classList.remove('active');
+          lb.querySelector('img').src = '';
         }
       });
     });

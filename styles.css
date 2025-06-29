@@ -1039,5 +1039,82 @@ section#video > .sports-video.video-preview {
 /* NUDGE MAIN VIDEO UP UNDER THE SUBTITLE */
 /* ────────────────────────────────────── */
 #video > .sports-video.video-preview {
-  transform: translateY(-10rem) !important;
+  transform: translateY(-8rem) !important;
+}
+
+/* ────────────────────────────────────── */
+/* TIGHTEN VIDEO-GRID SPACING            */
+/* ────────────────────────────────────── */
+#video .video-grid {
+    transform: translateY(-8.5rem) !important;
+    margin-bottom: 1em;
+}
+
+/* Enable smooth scrolling for anchor links and container scrolls */
+html, 
+.sports-page {
+  scroll-behavior: smooth;
+}
+
+
+
+
+
+
+/* ────────────────────────────────────── */
+/* MASONRY GALLERY                        */
+/* ────────────────────────────────────── */
+/* PHOTO GALLERY: 5 columns */
+.photo-gallery {
+  column-count: 5;    /* was 3 before */
+  column-gap: 1rem;
+  padding: 0 5rem;
+}
+
+.photo-tile {
+  break-inside: avoid;        /* prevent splitting */
+  margin-bottom: 1rem;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 1rem;        /* same rounding as videos */
+  transition: transform .3s ease;
+}
+.photo-tile:hover {
+  transform: translateY(-4px);
+}
+.photo-tile img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: 1rem;        /* ensure the image itself is rounded */
+}
+
+/* ────────────────────────────────────── */
+/* LIGHTBOX                               */
+/* ────────────────────────────────────── */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 1rem;
+}
+.lightbox-close {
+  position: absolute;
+  top: 2rem; right: 2rem;
+  background: none;
+  border: none;
+  font-size: 3rem;
+  color: #fff;
+  cursor: pointer;
+}
+.lightbox.active {
+  display: flex;
 }
